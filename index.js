@@ -4,17 +4,17 @@ const chalk = require('chalk');
  
 
 var userName = readlinesync.question(chalk.blue('What is your name ?'));
-var userAnswer = readlinesync.question(chalk.blue('Hello ' + userName + ' ,Do you know Ravi ?'));
+var userAnswer = readlinesync.question(chalk.blue('Hello ' + userName + ' ,Do you wan try Cricket quiz?'));
 
 
 //Total Score 
 var score = 0;
 
 if(userAnswer === 'yes'){
-console.log(chalk.keyword('orange')('Try few questions to know more about Ravi! '));
+console.log(chalk.keyword('orange')('Lets try few questions to test your cricket knowledge! '));
 }
 else{
-  console.log(chalk.green('Hi ' + userName + ', You can Connect with Ravi on Twitter/Linkedin, to know about him @ravipapasani/Ravi Teja Papasani !'));
+  console.log(chalk.green('Thank you ' + userName + ', for visiting my app!'));
 }
 
 //Play Function 
@@ -23,10 +23,10 @@ else{
   var userAnswers = readlinesync.question(questions);
 
   if(userAnswers.toUpperCase() === answers.toUpperCase()){
-    console.log(chalk.green('You are Right!'));
+    console.log(chalk.green('You are Right, correct answer!'));
     score = score + 1;
   }else{
-    console.log(chalk.red('You are Wrong!'));
+    console.log(chalk.red('Your answer is wrong!'));
   }
   console.log('Your current score is ' + score)
   }
@@ -35,20 +35,20 @@ else{
 //Array of Objects
 
 var questions = [{
- question: "Which state Ravi stay currently in US?",
-answer: "Texas"
+ question: "Which Country host Big Bash League in cricket?",
+answer: "Australia"
 },{
-question: "Which Tech Company Ravi like most?",
-answer: 'Microsoft'
+question: "which country has the second largest cricket ground in the world (Eden Gardens)?",
+answer: "India"
 },{
-question: "Which Company Ravi works for?",
- answer: "FedEx"
+question: "Boxing Day Test match is a cricket Test match held in Which Country ?",
+ answer: "Australia"
 },{
-question: "Who is Ravi's favorite Tv Host?",
-answer: "Trevor"
+question: "who is universe boss in cicket?",
+answer: "Gayle"
 },{
-question: "What is Ravi's last name?",
- answer: "Papasani"
+question: "which country won the first t20 cricket world cup?",
+ answer: "India"
 }];
 
 //loops
@@ -61,8 +61,36 @@ if(userAnswer === 'yes'){
 console.log(chalk.bold.green('Your final score is ' + score + ' out of ' + questions.length ));
 }
 
-//data of high scores
+//quiz high scores
+
+//keep data of high score
+
+var userHighScores = [
+{
+  name: "John",
+  score :5 ,
+},{
+  name: "Scott",
+  score : 4,
+},{
+  name: "Lee",
+  score: 3,
+}];
+
+
+
+//compare current user score with leading user's high scores
 if(userAnswer === 'yes' && score != 0){
+
+  for(var j=0;j<userHighScores.length;j++){
+    if(score > userHighScores[j].score){
+      console.log("Congrates, you are now one of the leading highest scorer crossed " + userHighScores[j].name + " score " +userHighScores[j].score);
+    }else if(score === userHighScores[j].score){
+      console.log("Congrates, you are now one of the leading highest scorer and leveled " + userHighScores[j].name + " score " +userHighScores[j].score);
+    }else{
+      console.log("Try this quiz again to be in top one of the three highest scores")
+    }
+  }
 var totalScores = [];
 totalScores.push({name:userName,score:score});
 console.log('Below are your total score for this Quiz ');
